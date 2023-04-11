@@ -29,6 +29,7 @@
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .submit-button {
@@ -44,4 +45,45 @@
 
 .submit-button:hover {
   background-color: #0056b3;
+}
+
+/* レスポンシブ対応のメディアクエリ */
+@media (max-width: 480px) {
+  .form-container {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  .form-title {
+    font-size: 20px;
+  }
+
+  .input-field {
+    font-size: 12px;
+  }
+
+  .submit-button {
+    font-size: 14px;
+  }
+}
+
+/* iPhone Xs用のメディアクエリ */
+@media (max-width: 375px) {
+  .form-container {
+    max-width: 90%;
+    padding: 10px;
+  }
+
+  .form-title {
+    font-size: 18px;
+  }
+
+  .input-field {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .submit-button {
+    font-size: 14px;
+  }
 }
