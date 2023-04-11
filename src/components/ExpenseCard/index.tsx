@@ -6,9 +6,10 @@ interface ExpenseCardProps {
   category: string;
   amount: number;
   date: number;
+  onDelete: () => void;
 }
 
-const ExpenseCard: React.FC<ExpenseCardProps> = ({ id, category, amount, date }) => {
+const ExpenseCard: React.FC<ExpenseCardProps> = ({ id, category, amount, date, onDelete }) => {
   return (
     <div className={styles.card}>
       <div className={styles.category}>{category}</div>
@@ -16,7 +17,7 @@ const ExpenseCard: React.FC<ExpenseCardProps> = ({ id, category, amount, date })
       <div className={styles.date}>{new Date(date).toLocaleString()}</div>
       <div className={styles.buttons}>
         <button>編集</button>
-        <button>削除</button>
+        <button onClick={onDelete}>削除</button>
       </div>
     </div>
   );

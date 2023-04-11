@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ExpenseCard from '../ExpenseCard'
 import styles from './ExpenseList.module.css'
 import { FirebaseError } from 'firebase/app'
-import { DataSnapshot, ref, onValue } from 'firebase/database'
+import { DataSnapshot, ref, onValue, remove } from 'firebase/database'
 import { database } from '../../firebase'
 
 interface Expense {
@@ -37,6 +37,11 @@ const ExpenseList: React.FC = () => {
     )
   }, [])
 
+  const handleDelete = (id: string) => {
+    const expenseRef = ref(database, `expenses/${id}`)
+    remove(expenseRef)
+  }
+
   return (
     <div className={styles['expense-list']}>
       <h2 className={styles['list-title']}>直近の支出一覧</h2>
@@ -48,6 +53,7 @@ const ExpenseList: React.FC = () => {
             category={expense.category}
             amount={expense.amount}
             date={expense.date}
+            onDelete={() => handleDelete(expense.id)}
           />
         ))}
       </div>
