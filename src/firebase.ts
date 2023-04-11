@@ -2,13 +2,13 @@ import { initializeApp } from 'firebase/app'
 import { getDatabase } from 'firebase/database'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyA0lNwhBHfLoDjd_1m4-mJXGUkCfOCwTh4',
-  authDomain: 'mylogapp-272b1.firebaseapp.com',
-  databaseURL: 'https://mylogapp-272b1-default-rtdb.firebaseio.com',
-  projectId: 'mylogapp-272b1',
-  storageBucket: 'mylogapp-272b1.appspot.com',
-  messagingSenderId: '42314394501',
-  appId: '1:42314394501:web:95ab70355e2becf93472ec',
+  apiKey: process.env.REACT_APP_APIKEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STRAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
 }
 
 // Firebase アプリを初期化
