@@ -70,6 +70,11 @@ const MoneyInputForm: React.FC = () => {
             className={styles['input-field']}
             value={amount}
             onChange={(e) => setAmount(Number(e.target.value))}
+            onFocus={(e) => {
+              if (e.target.value === '0') {
+                e.target.value = ''
+              }
+            }}
           />
         </div>
         <div className={styles['form-group']}>
