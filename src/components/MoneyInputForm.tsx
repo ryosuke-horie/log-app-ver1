@@ -40,7 +40,11 @@ const MoneyInputForm: React.FC = () => {
         </div>
         <div className={styles['form-group']}>
           <label className={styles['form-label']}>カテゴリ</label>
-          <Select options={options} className={styles['input-field']} />
+          <Select
+            options={options}
+            className={styles['input-field']}
+            placeholder="選択してください"
+          />
         </div>
         <button className={styles['submit-button']} onClick={ClickButton}>
           登録
