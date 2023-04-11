@@ -1,6 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import MoneyInputForm from './MoneyInputForm'
+import { render, screen } from '@testing-library/react'
+import MoneyInputForm from './index'
 
 describe('MoneyInputForm', () => {
   beforeEach(() => {

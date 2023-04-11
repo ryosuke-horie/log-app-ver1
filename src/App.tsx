@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import MoneyInputForm from './components/MoneyInputForm'
+import MoneyInputForm from './components/MoneyInputForm/index'
 
 function App() {
   return (

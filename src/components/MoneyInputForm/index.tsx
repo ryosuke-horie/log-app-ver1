@@ -5,7 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import styles from './MoneyInputForm.module.css'
 import { FirebaseError } from 'firebase/app'
 import { ref, push } from 'firebase/database'
-import { database } from '../firebase'
+import { database } from '../../firebase'
 
 interface CategoryOption {
   value: string
@@ -17,7 +17,9 @@ const MoneyInputForm: React.FC = () => {
   const [amount, setAmount] = useState(0)
   const [category, setCategory] = useState<CategoryOption | null>(null)
 
-  const submitMoneyForm = (event: React.MouseEvent<HTMLButtonElement>): void => {
+  const submitMoneyForm = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ): void => {
     event.preventDefault() // ページの再読み込みを防止する
     if (!category) {
       alert('カテゴリを選択してください')
