@@ -17,7 +17,7 @@ const MoneyInputForm: React.FC = () => {
   const [amount, setAmount] = useState(0)
   const [category, setCategory] = useState<CategoryOption | null>(null)
 
-  const ClickButton = (event: React.MouseEvent<HTMLButtonElement>): void => {
+  const submitMoneyForm = (event: React.MouseEvent<HTMLButtonElement>): void => {
     event.preventDefault() // ページの再読み込みを防止する
     if (!category) {
       alert('カテゴリを選択してください')
@@ -90,7 +90,7 @@ const MoneyInputForm: React.FC = () => {
         <button
           type="button"
           className={styles['submit-button']}
-          onClick={ClickButton}
+          onClick={submitMoneyForm}
         >
           登録
         </button>
