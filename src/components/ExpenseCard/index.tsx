@@ -1,15 +1,21 @@
-import React from 'react';
-import styles from './ExpenseCard.module.css';
+import React from 'react'
+import styles from './ExpenseCard.module.css'
 
 interface ExpenseCardProps {
-  id: string;
-  category: string;
-  amount: number;
-  date: number;
-  onDelete: () => void;
+  id: string
+  category: string
+  amount: number
+  date: number
+  onDelete: () => void
 }
 
-const ExpenseCard: React.FC<ExpenseCardProps> = ({ id, category, amount, date, onDelete }) => {
+const ExpenseCard: React.FC<ExpenseCardProps> = ({
+  id,
+  category,
+  amount,
+  date,
+  onDelete,
+}) => {
   return (
     <div className={styles.card}>
       <div className={styles.category}>{category}</div>
@@ -20,7 +26,7 @@ const ExpenseCard: React.FC<ExpenseCardProps> = ({ id, category, amount, date, o
         <button onClick={onDelete}>削除</button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ExpenseCard;
+export default ExpenseCard
