@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ExpenseCard from '../ExpenseCard'
 import styles from './ExpenseList.module.css'
-import { FirebaseError } from 'firebase/app'
+import { handleDelete } from './handleDelete'
 import { DataSnapshot, ref, onValue, remove } from 'firebase/database'
 import { database } from '../../firebase'
 
@@ -36,11 +36,6 @@ const ExpenseList: React.FC = () => {
       }
     )
   }, [])
-
-  const handleDelete = (id: string) => {
-    const expenseRef = ref(database, `expenses/${id}`)
-    remove(expenseRef)
-  }
 
   return (
     <div className={styles['expense-list']}>
