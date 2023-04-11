@@ -1,4 +1,5 @@
 import React from 'react';
+import Select from 'react-select';
 import styles from './MoneyInputForm.module.css';
 
 const MoneyInputForm: React.FC = () => {
@@ -7,6 +8,14 @@ const MoneyInputForm: React.FC = () => {
 
     // TODO: ここで入力された値を取得する
   };
+
+  const options = [
+    { value: '食費', label: '食費' },
+    { value: '交通費', label: '交通費' },
+    { value: '日用品', label: '日用品' },
+    { value: '娯楽', label: '娯楽' },
+    { value: 'その他', label: 'その他' },
+  ];
 
   return (
     <div className={styles["form-container"]}>
@@ -21,15 +30,9 @@ const MoneyInputForm: React.FC = () => {
           <input type="number" className={styles["input-field"]} />
         </div>
         <div className={styles["form-group"]}>
-          <label className={styles["form-label"]}>カテゴリ</label>
-          <select className={styles["input-field"]}>
-            <option value="食費">食費</option>
-            <option value="交通費">交通費</option>
-            <option value="日用品">日用品</option>
-            <option value="娯楽">娯楽</option>
-            <option value="その他">その他</option>
-          </select>
-        </div>
+        <label className={styles["form-label"]}>カテゴリ</label>
+        <Select options={options} className={styles["input-field"]} />
+      </div>
         <button className={styles["submit-button"]} onClick={ClickButton}>
           登録
         </button>

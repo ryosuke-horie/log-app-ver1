@@ -87,3 +87,10 @@
     font-size: 14px;
   }
 }
+
+/* iPhone, iPad (portrait) でのセレクトボックスの選択肢のスタイル */
+@media (max-width: 1023px) {
+  .input-field {
+    font-size: 16px;
+  }
+}
