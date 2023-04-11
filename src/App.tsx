@@ -6,7 +6,7 @@ import ExpenseList from './components/ExpenseList/index'
 function App() {
   return (
     <div className="App">
-      <h1>ログ管理アプリ</h1>
+      <h1>MyLogApp Ver.1</h1>
       <ExpenseForm />
       <ExpenseList />
     </div>
