@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { FaBars } from 'react-icons/fa';
 import Modal from 'react-modal';
@@ -48,16 +48,38 @@ const CustomModal = styled(Modal)`
   }
 `;
 
-const Header: React.FC = () => {
+const CloseButton = styled.button`
+  background-color: #fff;
+  color: #282c34;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+`;
+
+const CloseButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+`;
+
+interface HeaderProps {
+  onMenuClose: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onMenuClose }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const handleOpenModal = () => {
+  const handleOpenModal = useCallback(() => {
     setModalIsOpen(true);
-  };
+  }, []);
 
-  const handleCloseModal = () => {
+  const handleCloseModal = useCallback(() => {
     setModalIsOpen(false);
-  };
+    onMenuClose();
+  }, [onMenuClose]);
 
   return (
     <HeaderContainer>
@@ -67,12 +89,15 @@ const Header: React.FC = () => {
         <CustomModal
           isOpen={modalIsOpen}
           onRequestClose={handleCloseModal}
+          shouldCloseOnOverlayClick={true}
           ariaHideApp={false}
         >
           <h2>メニュー</h2>
           <div>Home</div>
           <div>お金関係</div>
-          <button onClick={handleCloseModal}>閉じる</button>
+          <CloseButtonContainer>
+            <CloseButton onClick={handleCloseModal}>閉じる</CloseButton>
+          </CloseButtonContainer>
         </CustomModal>
       </div>
     </HeaderContainer>

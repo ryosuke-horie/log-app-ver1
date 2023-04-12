@@ -5,9 +5,13 @@ import ExpenseForm from './components/ExpenseForm/index'
 import ExpenseList from './components/ExpenseList/index'
 
 function App() {
+  const handleMenuClose = () => {
+    console.log('Menu closed!');
+  };
+
   return (
     <div className="App">
-      <Header />
+      <Header onMenuClose={handleMenuClose} />
       <ExpenseForm />
       <ExpenseList />
     </div>
