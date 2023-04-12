@@ -1,7 +1,7 @@
-import React, { useCallback, useState } from 'react';
-import styled from 'styled-components';
-import { FaBars } from 'react-icons/fa';
-import Modal from 'react-modal';
+import React, { useCallback, useState } from 'react'
+import styled from 'styled-components'
+import { FaBars } from 'react-icons/fa'
+import Modal from 'react-modal'
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -10,13 +10,13 @@ const HeaderContainer = styled.div`
   padding: 10px;
   background-color: #282c34;
   color: #fff;
-`;
+`
 
 const Logo = styled.h1`
   font-size: 24px;
   font-weight: bold;
   margin: 0;
-`;
+`
 
 const MenuIcon = styled(FaBars)`
   display: block;
@@ -27,7 +27,7 @@ const MenuIcon = styled(FaBars)`
   @media (min-width: 768px) {
     display: none;
   }
-`;
+`
 
 const CustomModal = styled(Modal)`
   position: absolute;
@@ -46,7 +46,7 @@ const CustomModal = styled(Modal)`
   @media (min-width: 768px) {
     width: 400px;
   }
-`;
+`
 
 const CloseButton = styled.button`
   background-color: #fff;
@@ -57,29 +57,29 @@ const CloseButton = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
-`;
+`
 
 const CloseButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 20px;
-`;
+`
 
 interface HeaderProps {
-  onMenuClose: () => void;
+  onMenuClose: () => void
 }
 
 const Header: React.FC<HeaderProps> = ({ onMenuClose }) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false)
 
   const handleOpenModal = useCallback(() => {
-    setModalIsOpen(true);
-  }, []);
+    setModalIsOpen(true)
+  }, [])
 
   const handleCloseModal = useCallback(() => {
-    setModalIsOpen(false);
-    onMenuClose();
-  }, [onMenuClose]);
+    setModalIsOpen(false)
+    onMenuClose()
+  }, [onMenuClose])
 
   return (
     <HeaderContainer>
@@ -101,7 +101,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClose }) => {
         </CustomModal>
       </div>
     </HeaderContainer>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

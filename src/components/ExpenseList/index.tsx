@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import ExpenseCard from '../ExpenseCard'
-import styles from './ExpenseList.module.css'
 import { handleDelete } from './handleDelete'
 import { DataSnapshot, ref, onValue, remove } from 'firebase/database'
 import { database } from '../../firebase'
+import styled from 'styled-components'
 
 interface Expense {
   id: string
@@ -11,6 +11,29 @@ interface Expense {
   category: string
   date: number
 }
+
+const CardsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-right: -10px;
+`
+
+const ExpenseListContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+`
+
+const ListTitle = styled.h2`
+  width: 100%;
+  margin-bottom: 16px;
+`
 
 const ExpenseList: React.FC = () => {
   const [expenses, setExpenses] = useState<Expense[]>([])
@@ -38,9 +61,9 @@ const ExpenseList: React.FC = () => {
   }, [])
 
   return (
-    <div className={styles['expense-list']}>
-      <h2 className={styles['list-title']}>直近の支出一覧</h2>
-      <div className={styles['cards-container']}>
+    <ExpenseListContainer>
+      <ListTitle>直近の支出一覧</ListTitle>
+      <CardsContainer>
         {expenses.map((expense) => (
           <ExpenseCard
             key={expense.id}
@@ -51,8 +74,8 @@ const ExpenseList: React.FC = () => {
             onDelete={() => handleDelete(expense.id)}
           />
         ))}
-      </div>
-    </div>
+      </CardsContainer>
+    </ExpenseListContainer>
   )
 }
 

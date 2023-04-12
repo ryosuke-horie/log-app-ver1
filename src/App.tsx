@@ -6,8 +6,8 @@ import ExpenseList from './components/ExpenseList/index'
 
 function App() {
   const handleMenuClose = () => {
-    console.log('Menu closed!');
-  };
+    console.log('Menu closed!')
+  }
 
   return (
     <div className="App">
