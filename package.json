@@ -33,7 +33,9 @@
     "fix:eslint": "npm run lint:eslint --fix",
     "lint": "npm run lint:prettier && npm run lint:eslint",
     "fix": "npm run fix:prettier && npm run fix:eslint",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "eslintConfig": {
     "extends": [
@@ -54,6 +56,10 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^6.4.0",
+    "@storybook/addon-links": "^6.4.0",
+    "@storybook/addons": "^6.4.0",
+    "@storybook/react": "^6.4.0",
     "@types/firebase": "^3.2.1",
     "@types/react-datepicker": "^4.10.0",
     "@types/react-icons": "^3.0.0",
