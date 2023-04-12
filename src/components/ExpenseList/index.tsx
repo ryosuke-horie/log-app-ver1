@@ -21,14 +21,14 @@ const ExpenseList: React.FC = () => {
       databaseRef,
       (snapshot: DataSnapshot) => {
         const expensesData: { [key: string]: Expense } = snapshot.val() || {}
-        const expenses: Expense[] = Object.keys(expensesData).map(
-          (key: string) => ({
+        const expenses: Expense[] = Object.keys(expensesData)
+          .map((key: string) => ({
             id: key,
             amount: expensesData[key].amount,
             category: expensesData[key].category,
             date: expensesData[key].date,
-          })
-        )
+          }))
+          .sort((a, b) => b.date - a.date) // ここで降順にソート
         setExpenses(expenses)
       },
       (error: Error) => {
