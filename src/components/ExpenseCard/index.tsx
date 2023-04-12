@@ -22,7 +22,6 @@ const ExpenseCard: React.FC<ExpenseCardProps> = ({
       <div className={styles.amount}>{amount}円</div>
       <div className={styles.date}>{new Date(date).toLocaleString()}</div>
       <div className={styles.buttons}>
-        <button>編集</button>
         <button onClick={onDelete}>削除</button>
       </div>
     </div>
