@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ExpenseCard from '../ExpenseCard'
 import { handleDelete } from './handleDelete'
-import { DataSnapshot, ref, onValue, remove } from 'firebase/database'
+import { DataSnapshot, ref, onValue } from 'firebase/database'
 import { database } from '../../firebase'
 import styled from 'styled-components'
 
