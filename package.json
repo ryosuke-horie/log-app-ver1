@@ -27,10 +27,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "lint:prettier": "prettier --check .",
-    "fix:prettier": "prettier --write .",
-    "lint:eslint": "eslint --ext \".js,.ts\" --ignore-path .gitignore .",
-    "fix:eslint": "npm run lint:eslint --fix",
+    "lint:prettier": "prettier --check src/**/*.{js,jsx,ts,tsx}",
+    "fix:prettier": "prettier --write src/**/*.{js,jsx,ts,tsx}",
+    "lint:eslint": "eslint --ext \".js,.jsx,.ts,.tsx\" src",
+    "fix:eslint": "eslint --ext \".js,.jsx,.ts,.tsx\" src --fix",
     "lint": "npm run lint:prettier && npm run lint:eslint",
     "fix": "npm run fix:prettier && npm run fix:eslint",
     "test": "react-scripts test",
@@ -67,6 +67,7 @@
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "eslint": "^8.38.0",
+    "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-react": "^7.32.2",
     "prettier": "^2.8.7"
   }

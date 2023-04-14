@@ -1,10 +1,7 @@
-node_modules
-.vscode/*
-*.yml
-build
-dist
-dist-ssr
-*.local
-logs
-*.log
-.DS_Store
+node_modules/
+dist/
+build/
+coverage/
+.storybook/
+*.md
+*.json
