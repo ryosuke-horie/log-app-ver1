@@ -25,7 +25,6 @@ const MoneyInputForm: React.FC = () => {
       alert('カテゴリを選択してください')
       return
     }
-    const date = startDate.toISOString().slice(0, 10)
     const data = {
       amount: amount,
       category: category.value,

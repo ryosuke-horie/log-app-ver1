@@ -67,7 +67,6 @@ const Button = styled.button`
 `
 
 const ExpenseCard: React.FC<ExpenseCardProps> = ({
-  id,
   category,
   amount,
   date,
