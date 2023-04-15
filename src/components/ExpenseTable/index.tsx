@@ -1,25 +1,62 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { ref, onValue, Database, DatabaseReference } from 'firebase/database'
-import { database } from '../../firebase'
+import { getDatabase, ref, onValue } from 'firebase/database';
+import { database } from '../../firebase';
 
-type ExpenseData = {
-  amount: number
-  category: string
-  date: number
+const ExpenseTable: React.FC = () => {
+  const [totalAmount, setTotalAmount] = useState<number>(0)
+  const [categoryAmounts, setCategoryAmounts] = useState<{ [key: string]: number }>({})
+
+  useEffect(() => {
+    const expensesRef = ref(database, 'expenses')
+    const unsubscribe = onValue(expensesRef, (snapshot) => {
+      const expenses = snapshot.val()
+      if (!expenses) {
+        setTotalAmount(0)
+        setCategoryAmounts({})
+        return
+      }
+
+      const amounts = Object.values(expenses).map((expense: any) => expense.amount)
+      const total = amounts.reduce((acc: number, cur: number) => acc + cur, 0)
+      setTotalAmount(total)
+
+      const categories = Object.values(expenses).reduce((acc: { [key: string]: number }, cur: any) => {
+        const category = cur.category
+        const amount = cur.amount
+        acc[category] = (acc[category] || 0) + amount
+        return acc
+      }, {})
+      setCategoryAmounts(categories)
+    })
+
+    return () => unsubscribe()
+  }, [])
+
+  return (
+    <TableContainer>
+      <Table>
+        <tbody>
+          <TableRow>
+            <TableHeader>合計金額</TableHeader>
+            <TableData>{totalAmount}円</TableData>
+          </TableRow>
+          {Object.entries(categoryAmounts).map(([category, amount]) => (
+            <TableRow key={category}>
+              <TableHeader>{category}</TableHeader>
+              <TableData>{amount}円</TableData>
+            </TableRow>
+          ))}
+        </tbody>
+      </Table>
+    </TableContainer>
+  )
 }
 
-const TableContainer = styled.div`
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-`
+export default ExpenseTable
 
-const TableTitle = styled.h2`
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 20px;
+const TableContainer = styled.div`
+  margin-top: 20px;
 `
 
 const Table = styled.table`
@@ -27,68 +64,20 @@ const Table = styled.table`
   border-collapse: collapse;
 `
 
-const TableHead = styled.thead`
-  border-bottom: 1px solid #d8d8d8;
-`
-
-const TableBody = styled.tbody``
-
 const TableRow = styled.tr`
   &:nth-child(even) {
-    background-color: #f5f5f5;
+    background-color: #f2f2f2;
   }
 `
 
 const TableHeader = styled.th`
-  padding: 12px;
+  padding: 10px;
   text-align: left;
-  font-size: 1rem;
-  font-weight: bold;
+  background-color: #4caf50;
+  color: white;
 `
 
-const TableCell = styled.td`
-  padding: 12px;
-  font-size: 1rem;
+const TableData = styled.td`
+  padding: 10px;
+  text-align: right;
 `
-
-const ExpenseTable: React.FC = () => {
-  const [expenses, setExpenses] = useState<ExpenseData[]>([])
-
-  useEffect(() => {
-    const databaseRef: DatabaseReference = ref(database, 'expenses')
-    onValue(databaseRef, (snapshot) => {
-      const expenseArray: ExpenseData[] = []
-      snapshot.forEach((childSnapshot) => {
-        const expense = childSnapshot.val()
-        expenseArray.push(expense)
-      })
-      setExpenses(expenseArray)
-    })
-  }, [])
-
-  return (
-    <TableContainer>
-      <TableTitle>今月の支出一覧</TableTitle>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableHeader>日付</TableHeader>
-            <TableHeader>カテゴリ</TableHeader>
-            <TableHeader>金額</TableHeader>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {expenses.map((expense, index) => (
-            <TableRow key={index}>
-              <TableCell>{new Date(expense.date).toLocaleDateString()}</TableCell>
-              <TableCell>{expense.category}</TableCell>
-              <TableCell>{expense.amount}円</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  )
-}
-
-export default ExpenseTable

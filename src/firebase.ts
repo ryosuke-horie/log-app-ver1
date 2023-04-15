@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getDatabase } from 'firebase/database'
+import { getDatabase, ref, onValue } from 'firebase/database'
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_APIKEY,
@@ -15,4 +15,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 
 // Realtime Database インスタンスを取得
-export const database = getDatabase(app)
+const database = getDatabase(app)
+
+export { database, ref, onValue }
