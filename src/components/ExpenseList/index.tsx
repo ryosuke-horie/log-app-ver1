@@ -23,7 +23,7 @@ const ExpenseListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 10px;
 
   @media (max-width: 768px) {
     justify-content: center;

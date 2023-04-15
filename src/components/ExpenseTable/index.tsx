@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { getDatabase, ref, onValue } from 'firebase/database';
-import { database } from '../../firebase';
+import { getDatabase, ref, onValue } from 'firebase/database'
+import { database } from '../../firebase'
 
 const ExpenseTable: React.FC = () => {
   const [totalAmount, setTotalAmount] = useState<number>(0)
@@ -34,29 +34,53 @@ const ExpenseTable: React.FC = () => {
   }, [])
 
   return (
-    <TableContainer>
-      <Table>
-        <tbody>
-          <TableRow>
-            <TableHeader>合計金額</TableHeader>
-            <TableData>{totalAmount}円</TableData>
-          </TableRow>
-          {Object.entries(categoryAmounts).map(([category, amount]) => (
-            <TableRow key={category}>
-              <TableHeader>{category}</TableHeader>
-              <TableData>{amount}円</TableData>
+    <Card>
+      <CardContent>
+        <Table>
+          <tbody>
+            <TableRow>
+              <TableHeader>合計金額</TableHeader>
+              <TableData>{totalAmount}円</TableData>
             </TableRow>
-          ))}
-        </tbody>
-      </Table>
-    </TableContainer>
+            {Object.entries(categoryAmounts).map(([category, amount]) => (
+              <TableRow key={category}>
+                <TableHeader>{category}</TableHeader>
+                <TableData>{amount}円</TableData>
+              </TableRow>
+            ))}
+          </tbody>
+        </Table>
+      </CardContent>
+    </Card>
   )
 }
 
 export default ExpenseTable
 
-const TableContainer = styled.div`
+const Card = styled.div`
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
   margin-top: 20px;
+`
+
+const CardContent = styled.div`
+  padding: 40px;
+`
+
+const TableHeader = styled.th`
+  padding: 15px;
+  text-align: left;
+  background-color: #2c3e50;
+  color: white;
+`
+
+const TableData = styled.td`
+  padding: 15px;
+  text-align: right;
+  font-weight: bold;
 `
 
 const Table = styled.table`
@@ -66,18 +90,6 @@ const Table = styled.table`
 
 const TableRow = styled.tr`
   &:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #f8f8f8;
   }
-`
-
-const TableHeader = styled.th`
-  padding: 10px;
-  text-align: left;
-  background-color: #4caf50;
-  color: white;
-`
-
-const TableData = styled.td`
-  padding: 10px;
-  text-align: right;
 `
