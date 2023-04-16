@@ -1,14 +1,14 @@
 import React, { useCallback, useState } from 'react'
 
 // スタイル定義
-import { 
+import {
   HeaderContainer,
   Logo,
   MenuIcon,
   CustomModal,
   CloseButton,
   CloseButtonContainer,
-} from './HeaderStyles';
+} from './HeaderStyles'
 
 interface HeaderProps {
   onMenuClose: () => void

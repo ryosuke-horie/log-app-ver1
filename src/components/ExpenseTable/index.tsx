@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { getDatabase, ref, onValue } from 'firebase/database'
+import { ref, onValue } from 'firebase/database'
 import { database } from '../../firebase'
 
 const ExpenseTable: React.FC = () => {
   const [totalAmount, setTotalAmount] = useState<number>(0)
-  const [categoryAmounts, setCategoryAmounts] = useState<{ [key: string]: number }>({})
+  const [categoryAmounts, setCategoryAmounts] = useState<{
+    [key: string]: number
+  }>({})
 
   useEffect(() => {
     const expensesRef = ref(database, 'expenses')
@@ -17,16 +19,21 @@ const ExpenseTable: React.FC = () => {
         return
       }
 
-      const amounts = Object.values(expenses).map((expense: any) => expense.amount)
+      const amounts = Object.values(expenses).map(
+        (expense: any) => expense.amount
+      )
       const total = amounts.reduce((acc: number, cur: number) => acc + cur, 0)
       setTotalAmount(total)
 
-      const categories = Object.values(expenses).reduce((acc: { [key: string]: number }, cur: any) => {
-        const category = cur.category
-        const amount = cur.amount
-        acc[category] = (acc[category] || 0) + amount
-        return acc
-      }, {})
+      const categories = Object.values(expenses).reduce(
+        (acc: { [key: string]: number }, cur: any) => {
+          const category = cur.category
+          const amount = cur.amount
+          acc[category] = (acc[category] || 0) + amount
+          return acc
+        },
+        {}
+      )
       setCategoryAmounts(categories)
     })
 
