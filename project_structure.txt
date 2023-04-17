@@ -14,6 +14,13 @@
 |-- src
 |   |-- App.css
 |   |-- App.tsx
+|   |-- atoms
+|   |   |-- Button
+|   |   |   |-- index.stories.tsx
+|   |   |   `-- index.tsx
+|   |   `-- Text
+|   |       |-- index.stories.tsx
+|   |       `-- index.tsx
 |   |-- components
 |   |   |-- ExpenseCard
 |   |   |   `-- index.tsx
@@ -24,19 +31,23 @@
 |   |   |-- ExpenseList
 |   |   |   |-- handleDelete.ts
 |   |   |   `-- index.tsx
-|   |   |-- ExpenseTable
-|   |   |   `-- index.tsx
-|   |   `-- Header
-|   |       |-- Header.test.tsx
-|   |       |-- HeaderStyles.ts
+|   |   `-- ExpenseTable
 |   |       `-- index.tsx
 |   |-- firebase.ts
 |   |-- index.css
 |   |-- index.tsx
 |   |-- logo.svg
+|   |-- molecules
+|   |   `-- Header
+|   |       |-- HeaderStyles.ts
+|   |       |-- index.stories.tsx
+|   |       `-- index.tsx
+|   |-- organisms
+|   |-- pages
 |   |-- react-app-env.d.ts
 |   |-- reportWebVitals.ts
-|   `-- setupTests.ts
+|   |-- setupTests.ts
+|   `-- templates
 |-- storybook-static
 |   |-- 0.55b012452099ace2dca6.manager.bundle.js
 |   |-- 0.f39ce6c5.iframe.bundle.js
@@ -65,4 +76,4 @@
 |   `-- vendors~main.a935f15a2179a6eff5fd.manager.bundle.js.LICENSE.txt
 `-- tsconfig.json
 
-9 directories, 56 files
+16 directories, 60 files
