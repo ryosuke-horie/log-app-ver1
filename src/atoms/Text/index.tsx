@@ -1,12 +1,11 @@
 import styled from 'styled-components'
 
 export interface TextProps {
-    color?: string;
-    size?: string;
-    weight?: string;
-    children?: React.ReactNode;
-  }
-  
+  color?: string
+  size?: string
+  weight?: string
+  children?: React.ReactNode
+}
 
 const Text = styled.span<TextProps>`
   color: ${(props) => props.color || '#000'};
@@ -14,4 +13,4 @@ const Text = styled.span<TextProps>`
   font-weight: ${(props) => props.weight || 'normal'};
 `
 
-export default Text;
+export default Text

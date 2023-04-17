@@ -19,14 +19,20 @@ const ExpenseTable: React.FC = () => {
         return
       }
 
-      const amounts = Object.values(expenses).map(
-        (expense: any) => expense.amount
+      interface Expense {
+        amount: number
+        category: string
+      }
+
+      const amounts = Object.values<Expense>(expenses).map(
+        (expense) => expense.amount
       )
+
       const total = amounts.reduce((acc: number, cur: number) => acc + cur, 0)
       setTotalAmount(total)
 
-      const categories = Object.values(expenses).reduce(
-        (acc: { [key: string]: number }, cur: any) => {
+      const categories = Object.values<Expense>(expenses).reduce(
+        (acc: { [key: string]: number }, cur: Expense) => {
           const category = cur.category
           const amount = cur.amount
           acc[category] = (acc[category] || 0) + amount

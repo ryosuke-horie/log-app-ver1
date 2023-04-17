@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import Button from '../../atoms/Button/'
-import Text from '../../atoms/Text/' 
+import Text from '../../atoms/Text/'
 
 // スタイル定義
 import {
@@ -8,7 +8,6 @@ import {
   Logo,
   MenuIcon,
   CustomModal,
-  CloseButton,
   CloseButtonContainer,
 } from './HeaderStyles'
 
@@ -40,11 +39,15 @@ const Header: React.FC<HeaderProps> = ({ onMenuClose }) => {
           ariaHideApp={false}
         >
           <h2>メニュー</h2>
-          <div><Text>Home</Text></div>
-          <div><Text>お金関係</Text></div>
+          <div>
+            <Text>Home</Text>
+          </div>
+          <div>
+            <Text>お金関係</Text>
+          </div>
           <CloseButtonContainer>
             <Button onClick={handleCloseModal}>
-                <Text>閉じる</Text>
+              <Text>閉じる</Text>
             </Button>
           </CloseButtonContainer>
         </CustomModal>
@@ -53,4 +56,4 @@ const Header: React.FC<HeaderProps> = ({ onMenuClose }) => {
   )
 }
 
-export default Header;
+export default Header

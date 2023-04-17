@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components'
 
 export interface ButtonProps {
@@ -6,11 +7,7 @@ export interface ButtonProps {
 }
 
 const Button = ({ onClick, children }: ButtonProps) => {
-  return (
-    <ButtonContainer onClick={onClick}>
-      {children}
-    </ButtonContainer>
-  )
+  return <ButtonContainer onClick={onClick}>{children}</ButtonContainer>
 }
 
 const ButtonContainer = styled.button`
@@ -24,4 +21,4 @@ const ButtonContainer = styled.button`
   cursor: pointer;
 `
 
-export default Button;
+export default Button
