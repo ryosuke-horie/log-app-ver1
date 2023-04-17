@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import Header from './components/Header'
+import Header from './molecules/Header'
 import ExpenseForm from './components/ExpenseForm/index'
 import ExpenseTable from './components/ExpenseTable/index'
 import ExpenseList from './components/ExpenseList/index'
