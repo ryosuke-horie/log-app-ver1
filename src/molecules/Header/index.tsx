@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from 'react'
 import Button from '../../atoms/Button/'
 import Text from '../../atoms/Text/'
+import Logo from '../../atoms/Logo/'
 
 // スタイル定義
 import {
   HeaderContainer,
-  Logo,
   MenuIcon,
   CustomModal,
   CloseButtonContainer,
@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClose }) => {
 
   return (
     <HeaderContainer>
-      <Logo>MyLogApp Ver.1</Logo>
+      <Logo />
       <div>
         <MenuIcon role="button" onClick={handleOpenModal} />
         <CustomModal
