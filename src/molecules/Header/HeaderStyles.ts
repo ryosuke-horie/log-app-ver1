@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { FaBars } from 'react-icons/fa'
 import Modal from 'react-modal'
 
 export const HeaderContainer = styled.div`
@@ -15,17 +14,6 @@ export const Logo = styled.h1`
   font-size: 24px;
   font-weight: bold;
   margin: 0;
-`
-
-export const MenuIcon = styled(FaBars)`
-  display: block;
-  font-size: 24px;
-  color: #fff;
-  cursor: pointer;
-
-  @media (min-width: 768px) {
-    display: none;
-  }
 `
 
 export const CustomModal = styled(Modal)`
