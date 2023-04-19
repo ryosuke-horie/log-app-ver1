@@ -2,11 +2,10 @@ import React, { useCallback, useState } from 'react'
 import Button from '../../atoms/Button/'
 import Text from '../../atoms/Text/'
 import Logo from '../../atoms/Logo/'
-
+import MenuIcon from '../../atoms/MenuIcon/'
 // スタイル定義
 import {
   HeaderContainer,
-  MenuIcon,
   CustomModal,
   CloseButtonContainer,
 } from './HeaderStyles'
