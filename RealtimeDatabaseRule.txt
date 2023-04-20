@@ -1,0 +1,39 @@
+{
+  "rules": {
+    "expenses": {
+      ".read": true,
+      ".write": true,
+      "$push_id": {
+        ".validate": "newData.hasChildren(['category', 'date', 'amount'])",
+        "category": {
+          ".validate": "newData.isString() && newData.val().length > 0"
+        },
+        "date": {
+          ".validate": "newData.isNumber()"
+        },
+        "amount": {
+          ".validate": "newData.isNumber() && newData.val() >= 0"
+        }
+      }
+    },
+    "Income": {
+      ".read": true,
+      ".write": true,
+      "$push_id": {
+        ".validate": "newData.hasChildren(['type', 'source', 'amount', 'date'])",
+        "type": {
+          ".validate": "newData.isString() && newData.val().length > 0"
+        },
+        "source": {
+          ".validate": "newData.isString() && newData.val().length > 0"
+        },
+        "date": {
+          ".validate": "newData.isNumber()"
+        },
+        "amount": {
+          ".validate": "newData.isNumber() && newData.val() >= 0"
+        }
+      }
+    }
+  }
+}
