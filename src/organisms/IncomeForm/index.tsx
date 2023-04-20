@@ -5,10 +5,16 @@ import NumberField from '../../molecules/NumberField'
 import DateField from '../../molecules/DateField'
 
 const FormContainer = styled.div`
+  background-color: #f7f7f7;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 20px 20px 20px 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
 `
 
 const Form = styled.form`
@@ -80,8 +86,8 @@ const IncomeForm: React.FC<Props> = ({ onSubmit }) => {
           label="種別"
           name="type"
           options={[
-            { label: '収入', value: 'income' },
-            { label: '支出', value: 'expense' },
+            { label: '給与', value: 'income' },
+            { label: 'ボーナス', value: 'bonus' },
           ]}
           type={''}
         />
@@ -89,14 +95,14 @@ const IncomeForm: React.FC<Props> = ({ onSubmit }) => {
           label="収入源"
           name="source"
           options={[
-            { label: '給与', value: 'salary' },
-            { label: '投資', value: 'investment' },
+            { label: 'MITS', value: 'mits' },
+            { label: 'Hide`s Kick', value: 'kick' },
             { label: 'その他', value: 'other' },
           ]}
           type={''}
         />
         <NumberField label="金額" name="amount" type={''} />
-        <DateField label="日付" name="date" type={''} />
+        <DateField label="日付" name="date" type={'date'} />
         <Button type="submit">登録</Button>
       </Form>
     </FormContainer>
