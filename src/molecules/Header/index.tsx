@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react'
+import { Link } from 'react-router-dom'
 import Button from '../../atoms/Button/'
 import Text from '../../atoms/Text/'
 import Logo from '../../atoms/Logo/'
@@ -42,7 +43,10 @@ const Header: React.FC<HeaderProps> = ({ onMenuClose }) => {
             <Text>Home</Text>
           </div>
           <div>
-            <Text>お金関係</Text>
+            <Link to="/">支出管理</Link>{' '}
+          </div>
+          <div>
+            <Link to="/income">収入管理</Link>
           </div>
           <CloseButtonContainer>
             <Button onClick={handleCloseModal}>
