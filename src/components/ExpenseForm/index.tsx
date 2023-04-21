@@ -45,6 +45,7 @@ const MoneyInputForm: React.FC = () => {
 
   const options: CategoryOption[] = [
     { value: '食費', label: '食費' },
+    { value: 'カフェ代', label: 'カフェ代' },
     { value: '交通費', label: '交通費' },
     { value: '日用品', label: '日用品' },
     { value: '娯楽', label: '娯楽' },
