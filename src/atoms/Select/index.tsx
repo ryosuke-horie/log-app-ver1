@@ -12,13 +12,15 @@ const Select = ({
   children,
   name,
   id,
+  onChange, // onChange を追加
 }: {
   children: React.ReactNode
   name: string
   id: string
+  onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void // onChange を追加
 }) => {
   return (
-    <SelectStyle name={name} id={id}>
+    <SelectStyle name={name} id={id} onChange={onChange}>
       {children}
     </SelectStyle>
   )

@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+
 import SelectField from '../../molecules/SelectField'
 import NumberField from '../../molecules/NumberField'
 import DateField from '../../molecules/DateField'
+
+// Firebase
+import { FirebaseError } from 'firebase/app'
+import { ref, push, set } from 'firebase/database'
+import { database } from '../../firebase'
 
 const FormContainer = styled.div`
   background-color: #f7f7f7;
@@ -59,7 +65,12 @@ interface Props {
   date?: { label: string; name: string }
 }
 
-const IncomeForm: React.FC<Props> = ({ onSubmit }) => {
+const IncomeForm: React.FC<Props> = () => {
+  const [type, setType] = useState('income')
+  const [source, setSource] = useState('mits')
+  const [amount, setAmount] = useState(0)
+  const [date, setDate] = useState(new Date().toISOString().slice(0, 10))
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const target = event.target as typeof event.target & {
@@ -76,7 +87,21 @@ const IncomeForm: React.FC<Props> = ({ onSubmit }) => {
       amount: target.amount.valueAsNumber,
       date: target.date.value,
     }
-    onSubmit(values)
+
+    // firebase
+    const databaseRef = ref(database, 'income')
+    push(databaseRef, values)
+      .then(() => {
+        alert('登録しました。')
+        setType('income')
+        setSource('mits')
+        setAmount(0)
+        setDate(new Date().toISOString().slice(0, 10))
+        // TODO フォームの値をリセットする
+      })
+      .catch((error: FirebaseError) => {
+        alert(`登録に失敗しました。${error.message}`)
+      })
   }
 
   return (
@@ -90,6 +115,7 @@ const IncomeForm: React.FC<Props> = ({ onSubmit }) => {
             { label: 'ボーナス', value: 'bonus' },
           ]}
           type={''}
+          id="type" // 追加
         />
         <SelectField
           label="収入源"
@@ -100,6 +126,8 @@ const IncomeForm: React.FC<Props> = ({ onSubmit }) => {
             { label: 'その他', value: 'other' },
           ]}
           type={''}
+          onChange={(e): any => setSource(e.target.value)}
+          id="source" // 追加
         />
         <NumberField label="金額" name="amount" type={''} />
         <DateField label="日付" name="date" type={'date'} />
