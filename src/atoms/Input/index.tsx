@@ -15,8 +15,8 @@ const InputStyle = styled.input`
  * @param name name属性
  * @param required 必須項目かどうか
  */
-const Input = ({type, name, required}: {type: string; name: string; required?: boolean }) => {
-  return <InputStyle type={type} name={name} required={required} />
+const Input = ({type, name, id, value, onChange, required}: {type: string; name: string; id?:string; value?:string; onChange?:any; required?: boolean }) => {
+  return <InputStyle type={type} id={name} name={name} required={required} />
 }
 
 export default Input
