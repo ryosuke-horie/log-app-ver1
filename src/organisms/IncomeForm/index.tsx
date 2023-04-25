@@ -115,7 +115,7 @@ const IncomeForm: React.FC<Props> = () => {
             { label: 'ボーナス', value: 'bonus' },
           ]}
           type={''}
-          id="type" // 追加
+          id="type"
         />
         <SelectField
           label="収入源"
@@ -127,10 +127,10 @@ const IncomeForm: React.FC<Props> = () => {
           ]}
           type={''}
           onChange={(e): any => setSource(e.target.value)}
-          id="source" // 追加
+          id="source"
         />
-        <NumberField label="金額" name="amount" type={''} />
-        <DateField label="日付" name="date" type={'date'} />
+        {/* <NumberField label="金額" name="amount" value="0" type={''} onChange={setAmount()} /> */}
+        {/* <DateField label="日付" name="date" value={date} type={'date'} onChange={setDate} /> */}
         <Button type="submit">登録</Button>
       </Form>
     </FormContainer>

@@ -11,14 +11,18 @@ const InputStyle = styled.input`
 const Input = ({
   type,
   name,
+  value,
+  onChange,
   required,
 }: {
   type: string
   name: string
   id: string
+  value?: string
+  onChange?: (e:  any) => void
   required?: boolean
 }) => {
-  return <InputStyle type={type} name={name} required={required} />
+  return <InputStyle type={type} name={name} value={value} onChange={onChange} required={required} />
 }
 
 export default Input

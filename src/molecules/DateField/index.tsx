@@ -12,14 +12,16 @@ interface Props {
   label: string
   name: string
   type: string
+  value?: string
+  onChange?: (e:  React.Dispatch<React.SetStateAction<number>>) => void 
   options?: { label: string; value: string }[]
 }
 
-const DateField: React.FC<Props> = ({ label, name }) => {
+const DateField: React.FC<Props> = ({ label, name, value, onChange }) => {
   return (
     <Field>
       <Label htmlFor={name}>{label}</Label>
-      <Input type="date" name={name} id={name} required />
+      <Input type="date" name={name} id={name} value={value} onChange={onChange} required />
     </Field>
   )
 }
