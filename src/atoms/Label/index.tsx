@@ -12,7 +12,13 @@ const LabelStyle = styled.label`
  * @param children 子要素
  * @param htmlFor for属性
  */
-const Label = ({ children, htmlFor }: {children: React.ReactNode; htmlFor: string }) => {
+const Label = ({
+  children,
+  htmlFor,
+}: {
+  children: React.ReactNode
+  htmlFor: string
+}) => {
   return <LabelStyle htmlFor={htmlFor}>{children}</LabelStyle>
 }
 

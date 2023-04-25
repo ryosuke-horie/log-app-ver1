@@ -13,7 +13,7 @@ interface Props {
   name: string
   type: string
   value: string
-  onChange: (e:  React.Dispatch<React.SetStateAction<number>>) => void
+  onChange: (e: React.Dispatch<React.SetStateAction<number>>) => void
   options?: { label: string; value: string }[]
 }
 
@@ -21,7 +21,14 @@ const NumberField: React.FC<Props> = ({ label, name, value, onChange }) => {
   return (
     <Field>
       <Label htmlFor={name}>{label}</Label>
-      <Input type="number" name={name} id={name} value={value} onChange={onChange} required />
+      <Input
+        type="number"
+        name={name}
+        id={name}
+        value={value}
+        onChange={onChange}
+        required
+      />
     </Field>
   )
 }
