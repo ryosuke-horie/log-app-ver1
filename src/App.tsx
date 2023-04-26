@@ -3,7 +3,7 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import ExpensePage from './pages/Expense'
 import Income from './pages/Income'
-import WeightForm from './components/WeightForm'
+import WeightPage from './pages/Weight'
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route index path="/" element={<ExpensePage />} />
         <Route index path="/income" element={<Income />} />
-        <Route index path="/weight" element={<WeightForm />} />
+        <Route index path="/weight" element={<WeightPage />} />
       </Routes>
     </Router>
   )
