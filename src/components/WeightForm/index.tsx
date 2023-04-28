@@ -5,9 +5,11 @@ const WeightForm = () => {
   const [weight, setWeight] = useState('')
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    // e.preventDefault()
     try {
-      axios.post('http://127.0.0.1/api/weights', { weight: 70 })
+      axios.post('http://127.0.0.1/api/weights', { 
+        weight: 70
+       })
       alert('体重データを登録しました。')
       setWeight('')
     } catch (error) {
