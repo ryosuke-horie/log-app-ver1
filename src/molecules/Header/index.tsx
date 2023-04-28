@@ -48,6 +48,9 @@ const Header: React.FC<HeaderProps> = ({ onMenuClose }) => {
           <div>
             <Link to="/income">収入管理</Link>
           </div>
+          <div>
+            <Link to="/weight">体重管理</Link>
+          </div>
           <CloseButtonContainer>
             <Button onClick={handleCloseModal}>
               <Text>閉じる</Text>
