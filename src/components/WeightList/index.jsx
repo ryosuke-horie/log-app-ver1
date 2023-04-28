@@ -3,13 +3,12 @@ import axios from 'axios';
 
 const WeightList = () => {
   const [weights, setWeights] = useState([]);
-  // const API_BASE_URL = 'https://healthcare-bxrot8ge5-ryosuke-horie.vercel.app'; // <- VercelアプリのURLを設定
-  const API_BASE_URL = 'http://127.0.0.1';
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL; // APIのURLを環境変数から取得
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(`${API_BASE_URL}/api/weights`); // <- URLを変更
+        const { data } = await axios.get(`${API_BASE_URL}/api/weights`);
         setWeights(data);
       } catch (error) {
         console.error(error);
@@ -20,7 +19,7 @@ const WeightList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${API_BASE_URL}/api/weights/${id}`); // <- URLを変更
+      await axios.delete(`${API_BASE_URL}/api/weights/${id}`);
       setWeights(weights.filter((weight) => weight.id !== id));
     } catch (error) {
       console.error(error);
