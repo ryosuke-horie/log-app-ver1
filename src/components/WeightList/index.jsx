@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 const WeightList = () => {
-  const [weights, setWeights] = useState([]);
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL; // APIのURLを環境変数から取得
+  const [weights, setWeights] = useState([])
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL // APIのURLを環境変数から取得
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(`${API_BASE_URL}/api/weights`);
-        setWeights(data);
+        const { data } = await axios.get(`${API_BASE_URL}/api/weights`)
+        setWeights(data)
       } catch (error) {
-        console.error(error);
+        console.error(error)
       }
-    };
-    fetchData();
-  }, []);
+    }
+    fetchData()
+  }, [])
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${API_BASE_URL}/api/weights/${id}`);
-      setWeights(weights.filter((weight) => weight.id !== id));
+      await axios.delete(`${API_BASE_URL}/api/weights/${id}`)
+      setWeights(weights.filter((weight) => weight.id !== id))
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
-  };
+  }
 
   return (
     <div>
@@ -42,7 +42,7 @@ const WeightList = () => {
         </ul>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default WeightList;
+export default WeightList
